@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Spaceshuttle</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css?family=Spartan&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+<section>
+  <div class="headerblok">
+    <div class="container">
+      <div class="row flexcenter">
+        <div class="col-sm-12 col-lg-6">
+          <div class="tekst">
+            <span><strong>Welkom</strong></span>
+            <span>in de spaceshuttle</span>
+          </div>
+        </div>
+        <div class="col-sm-12 col-lg-6">
+          <div class="afbeelding">
+            <img src="images/rocket-01.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <div class="row chartsflex">
+      <div class="col-sm-12 col-md-6 col-lg-8">
+        <div class="chartcontainer">
+          <span>
+            <img src="images/data.png" alt="">
+            Afstand tijd grafiek
+          </span>
+          <div id="chart_div"></div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-6 col-lg-4">
+        <div class="chartcontainer">
+          <span>
+            <img src="images/raket.png" alt="">
+            Snelheid
+          </span>
+          <div id="gauge_div"></div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-12 col-lg-8">
+        <div class="chartcontainer">
+          <span>
+            <img src="images/octopus.png" alt="">
+            Eten en drinken
+          </span>
+          <div id="tabel_div"></div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-6 col-lg-4">
+        <div class="chartcontainer paarsebg">
+          <span>
+            Wist je dat...
+          </span>
+          <span>Space shuttles gemiddeld 200 tot 385 mijl , dat is 322 tot 650km <br> Deze gaat 5 keer zo snel</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load('current', {packages: ['corechart', 'line']});
+  google.charts.setOnLoadCallback(drawBasic);
+
+  function drawBasic() {
+    var data = new google.visualization.DataTable();
+    data.addColumn('number', 'tijd');
+    data.addColumn('number', 'afstand');
+
+    data.addRows([
+      [0, 0],   [1, 10],  [2, 23],  [3, 17],  [4, 18],  [5, 9],
+      [6, 11],  [7, 27],  [8, 33],  [9, 40],  [10, 32], [11, 35],
+      [12, 30], [13, 40], [14, 42], [15, 47], [16, 44], [17, 48],
+      [18, 52], [19, 54], [20, 42], [21, 55], [22, 56], [23, 57],
+      [24, 60], [25, 50], [26, 52], [27, 51], [28, 49], [29, 53],
+      [30, 55], [31, 60], [32, 61], [33, 59], [34, 62], [35, 65],
+      [36, 62], [37, 58], [38, 55], [39, 61], [40, 64], [41, 65],
+      [42, 63], [43, 66], [44, 67], [45, 69], [46, 69], [47, 70],
+      [48, 72], [49, 68], [50, 66], [51, 65], [52, 67], [53, 70],
+      [54, 71], [55, 72], [56, 73], [57, 75], [58, 70], [59, 68],
+      [60, 64], [61, 60], [62, 65], [63, 67], [64, 68], [65, 69],
+      [66, 70], [67, 72], [68, 75], [69, 80]
+    ]);
+
+    var options = {
+      hAxis: {
+        title: 'Tijd'
+      },
+      vAxis: {
+        title: 'afstand'
+      }
+    };
+
+    var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+    chart.draw(data, options);
+  }
+
+google.charts.load('current', {'packages':['gauge']});
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart() {
+
+  var data = google.visualization.arrayToDataTable([
+    ['Label', 'Value'],
+    ['Memory', 80]
+  ]);
+
+  var options = {
+    width: 200, height: 200,
+    redFrom: 90, redTo: 100,
+    yellowFrom:75, yellowTo: 90,
+    minorTicks: 5
+  };
+
+  var chart = new google.visualization.Gauge(document.getElementById('gauge_div'));
+
+  chart.draw(data, options);
+
+  setInterval(function() {
+    data.setValue(0, 1, 40 + Math.round(60 * Math.random()));
+    chart.draw(data, options);
+  }, 13000);
+}
+
+google.charts.load('current', {'packages':['table']});
+google.charts.setOnLoadCallback(drawTable);
+
+function drawTable() {
+  var data = new google.visualization.DataTable();
+  data.addColumn('string', 'gerecht');
+  data.addColumn('number', 'prijs');
+  data.addColumn('boolean', 'beschikbaarheid');
+  data.addRows([
+    ['pasta',  {v: 10000, f: '€7,00'}, true],
+    ['steak',   {v:8000,   f: '€10,00'},  false],
+    ['water', {v: 12500, f: '€1,00'}, true],
+    ['coffe/thee',   {v: 7000,  f: '€2,00'},  true]
+  ]);
+
+  var table = new google.visualization.Table(document.getElementById('tabel_div'));
+
+  table.draw(data, {showRowNumber: true, width: '100%', height: '100%'});
+}
+</script>
+</html>

@@ -1,0 +1,106 @@
+body{
+  margin:0;
+}
+
+.paarsebg{
+  font-family: Spartan;
+  background: rgb(14,175,212);
+  background: -moz-linear-gradient(38deg, rgba(14,175,212,1) 0%, rgba(156,50,254,1) 100%);
+  background: -webkit-linear-gradient(38deg, rgba(14,175,212,1) 0%, rgba(156,50,254,1) 100%);
+  background: linear-gradient(38deg, rgba(14,175,212,1) 0%, rgba(156,50,254,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0eafd4",endColorstr="#9c32fe",GradientType=1);
+}
+
+body .paarsebg span{
+  color:#fff!important;
+}
+
+.headerblok{
+  display: flex;
+  align-items: center;
+  min-height:300px;
+  width:100%;
+  background: rgb(14,175,212);
+  background: -moz-linear-gradient(38deg, rgba(14,175,212,1) 0%, rgba(156,50,254,1) 100%);
+  background: -webkit-linear-gradient(38deg, rgba(14,175,212,1) 0%, rgba(156,50,254,1) 100%);
+  background: linear-gradient(38deg, rgba(14,175,212,1) 0%, rgba(156,50,254,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0eafd4",endColorstr="#9c32fe",GradientType=1);
+}
+
+.chartcontainer span img{
+  max-width:50px;
+}
+
+.headerblok img{
+  max-width: 210px;
+  margin: 0 auto;
+  display: block;
+  padding: 20px;
+}
+
+.tekst{
+  text-align: center
+}
+
+.headerblok span{
+  display: flex;
+  justify-content: center;
+  font-family: Spartan;
+  color:#fff;
+  font-size:30px;
+}
+
+.flexcenter{
+  display: flex;
+  align-items: center;
+}
+
+.chartsflex{
+  margin-top:20px;
+  display: flex;
+  align-items: center;
+}
+
+.chartcontainer{
+  padding:20px;
+  box-shadow: 4px 3px 20px 1px #00000033;
+  margin-bottom: 30px;
+  min-height: 250px;
+}
+
+.chartcontainer span{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 21px;
+  color: #9b33fe;
+  margin-bottom:20px;
+}
+
+@media only screen and (min-width: 1024px) {
+  .chartcontainer {
+      padding: 20px;
+      box-shadow: 4px 3px 20px 1px #00000033;
+      margin-bottom: 30px;
+      min-height: 300px;
+  }
+}
+
+
+
+@media only screen and (max-width: 768px) {
+  .paarsebg{
+    display: none!important;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .flexcenter{
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+  }
+  .tekst{
+    margin-bottom:20px;
+  }
+}
